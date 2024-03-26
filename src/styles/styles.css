@@ -1,0 +1,16 @@
+*,
+*::before,
+*::after{
+  padding: 0;
+  margin: 0;
+}
+.dropdown-menu {
+  display: none;
+  list-style-type: none;
+  text-align: left; /* Align text to the left */
+  background-color: blue;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
