@@ -2,38 +2,43 @@ class Dropdown {
   constructor() {
     this.initializeDom();
     this.cacheDom();
-    this.initializeDropdowns();
+    this.initializeDropdown();
   }
 
   cacheDom() {
     this.body = document.querySelector('body');
-    this.dropdowns = document.querySelectorAll('.dropdown');
+    this.dropdowns = document.querySelector('.dropdown-script');
+    this.toggleButton = document.querySelector('.dropdown-toggle');
+    this.dropdownContent = document.querySelector('.dropdown-content');
   }
 
   initializeDom() {
     this.body = document.querySelector('body');
-    this.body.innerHTML = `<div class="dropdown">
-    <button class="dropdown-toggle">Menu</button>
-    <ul class="dropdown-menu">
-      <li><a href="#">Item 1</a></li>
-      <li><a href="#">Item 2</a></li>
-      <li><a href="#">Item 3</a></li>
-    </ul>
+    this.body.innerHTML += `
+    <div class="dropdown-script">
+    <button class='dropdown-toggle'>Food Click</button>
+    <div class="dropdown-content">
+      <a href="">Apple</a>
+      <a href="">Banana</a>
+      <a href="">Orange</a>
+    </div>
+  </div>
+    <div class="dropdown">
+      <button>Food Hover</button>
+      <div class="content">
+        <a href="">Apple</a>
+        <a href="">Banana</a>
+        <a href="">Orange</a>
+      </div>
     </div>`;
   }
 
-  initializeDropdowns() {
-    this.dropdowns.forEach((dropdown) => {
-      const toggleButton = dropdown.querySelector('.dropdown-toggle');
-      const menu = dropdown.querySelector('.dropdown-menu');
-
-      toggleButton.addEventListener('click', () => {
-        menu.classList.toggle('show');
-      });
-
-      dropdown.addEventListener('mouseleave', () => {
-        menu.classList.remove('show');
-      });
+  initializeDropdown() {
+    this.toggleButton.addEventListener('click', () => {
+      this.dropdownContent.classList.toggle('show');
+    });
+    this.dropdowns.addEventListener('mouseleave', () => {
+      this.dropdownContent.classList.remove('show');
     });
   }
 }
